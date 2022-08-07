@@ -26,7 +26,7 @@ class TaskListViewController: UITableViewController {
     }
     
     private func setupNavigationBar() {
-        title = "Task List"
+        title = "JustToDoList ✔️"
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let navBarAppearance = UINavigationBarAppearance()
@@ -43,6 +43,11 @@ class TaskListViewController: UITableViewController {
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .edit,
+            target: self,
+            action: #selector(addNewTask)
+        )
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
@@ -89,6 +94,7 @@ extension TaskListViewController {
         var content = cell.defaultContentConfiguration()
         content.text = task.title
         cell.contentConfiguration = content
+        
         return cell
     }
 }
